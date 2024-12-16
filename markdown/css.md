@@ -109,7 +109,7 @@ h1, h2, h3 {
 ```
 
 ---
-## 3. Essential Properties
+## 4. Essential Properties
 
 ### Text Styling
 
@@ -169,4 +169,132 @@ div {
     padding: 1rem;     /* Relative to root element */
 }
 ```
+## 5. Animations
 
+```css
+/* First, define our keyframes for different animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* Add entrance animation to the form */
+main {
+    /* Keep existing styles... */
+    animation: slideIn 0.6s ease-out;
+}
+
+/* Stagger the entrance of form elements */
+.form-group {
+    /* Keep existing styles... */
+    animation: slideIn 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+/* Stagger each form group's entrance */
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
+.form-group:nth-child(5) { animation-delay: 0.5s; }
+
+/* Add hover animation to inputs */
+input[type="text"]:hover,
+input[type="email"]:hover,
+textarea:hover,
+select:hover {
+    /* Keep existing styles... */
+    animation: pulse 0.5s ease-in-out;
+}
+
+/* Enhanced focus animations */
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+select:focus {
+    /* Keep existing styles... */
+    animation: pulse 0.3s ease-in-out;
+}
+
+/* Submit button animations */
+button[type="submit"] {
+    /* Keep existing styles... */
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button[type="submit"]:hover {
+    /* Keep existing styles... */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Add ripple effect on button */
+button[type="submit"]::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+}
+
+button[type="submit"]:active::after {
+    width: 200px;
+    height: 200px;
+}
+
+/* Add error state animation */
+.form-group.error input,
+.form-group.error textarea,
+.form-group.error select {
+    border-color: #ff3b30;
+    animation: shake 0.4s ease-in-out;
+}
+
+/* Success feedback animation */
+.form-group.success input,
+.form-group.success textarea,
+.form-group.success select {
+    border-color: #34c759;
+    animation: pulse 0.4s ease-in-out;
+}
