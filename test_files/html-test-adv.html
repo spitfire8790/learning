@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Contact Us</title>
+</head>
+
+<body>
+    <main> <!--Wrap form in a main element for better semantics --> 
+        <h1>Contact Us</h1>
+        <!-- The form element is our container for all form controls -->
+        <!-- The action attribute would typically point to a server endpoint -->
+        <!-- The method POST is used for sending data securely -->
+        <form action="/submit" method="POST">
+            <!-- Name field: We use a div to create a form group -->
+            <div class="form-group">
+                    <!-- The label's 'for' attribute connects it to the input's 'id' -->
+                    <!-- This improves accessibility and user experience -->
+                <label for="name">Full name:</label>
+                    <!-- Required attribute makes this compulsory-->
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="Enter your full name"
+                >    
+            </div>
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="Enter your email address"
+                >    
+            </div>
+
+            <div class="form-group">
+                <label for "dob">Date of birth:</label>
+                <input
+                    type="date"
+                    id="dob"
+                    name="dob"
+                    required
+                >
+            </div>
+            <div class="form-group">
+                <label for "subject">Subject:</label>
+                <select id="subject" name="subject" required>
+                    <option value="">Please select a subject</option>
+                    <option value="General">General inquiry</option>
+                    <option value="Feedback">Provide feedback</option>
+                </select> 
+            </div>
+            <div class="form-group">
+                <label for "message">Message:</label>
+                <textarea
+                    id="message"
+                    name="message"
+                    rows="10"
+                    required
+                    placeholder="Type your message here..."
+                ></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+
+        </form>
+    </main>
+</body>
+</html>
+
+
+
+
+
+<!-- Exercise 1: Create a Contact Form
+
+Build a contact form that includes:
+
+Name (text input)
+Email (email input)
+Subject (dropdown with at least 3 options)
+Message (textarea)
+"Subscribe to newsletter" checkbox
+Submit button
+Proper labels and grouping
+Required field validation
